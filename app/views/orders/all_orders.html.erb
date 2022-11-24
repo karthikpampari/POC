@@ -1,0 +1,21 @@
+<%if @orders.present? %>
+    <% @orders.each do |order|%>
+      <% if order.total > 0 %>
+        <div class="card">
+            <div class="card-header">
+            Order id: <%=order.id%>
+            </div>
+            <div class="card-body">
+            <h5 class="card-title">
+            <% order.order_items.each do |oi|%>
+                <%=oi.product_name %> | quantity: <%= oi.quantity%> | unit_price: <%= oi.subtotal%> <br>
+            <% end %>  
+            </h5>
+            <p class="card-text"><h5> total price: <%=order.total%></h5>
+            </div>
+        </div><br>
+      <% end %> 
+    <% end %>
+<%else %>
+  <h3>please order </h3>
+<%end %>

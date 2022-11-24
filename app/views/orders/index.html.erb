@@ -1,0 +1,55 @@
+<div class="card text-center" style="margin-bottom: 2.5rem">
+  <div class="card-header">
+    <div>Please Order</div> 
+    <div class="btn-group" role="group" aria-label="Basic example">
+        
+        <%= button_to "veg", orders_path("veg"), method: :get , class: "btn btn-outline-warning #{@flag1}"%> 
+        <%= button_to "non-veg", orders_path("non-veg"), method: :get , class: "btn btn-outline-warning #{@flag2}"%> 
+        <%= button_to "all", orders_path, method: :get , class: "btn btn-outline-warning #{@flag3}"%> 
+
+    </div>
+  <div class="card-body">
+    <h5 class="card-title">Menu items</h5>
+   
+        <hr><h4>Starters</h4><hr>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            <% @items.each do |item| %>
+                <% if item.item_type == "Starter"%>
+                    <%= render "orders/ordering", item: item %>
+                <% end %>
+            <% end %>
+        </div>
+        
+        <hr><h4>Main Course</h4><hr>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            <% @items.each do |item| %>
+                <% if item.item_type == "Main Course"%>
+                    <%= render "orders/ordering", item: item %>
+                <% end %>
+            <% end %>
+        </div>
+
+        <hr><h4>Beverages</h4><hr>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            <% @items.each do |item| %>
+                <% if item.item_type == "Beverages"%>
+                    <%= render "orders/ordering", item: item %>
+                <% end %>
+            <% end %>
+        </div>
+
+        <hr><h4>Fast Food</h4><hr>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            <% @items.each do |item| %>
+                <% if item.item_type == "fast-food"%>
+                    <%= render "orders/ordering", item: item %>
+                <% end %>
+            <% end %>
+        </div>
+
+  </div>
+</div>
+
+
+
+

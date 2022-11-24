@@ -1,0 +1,57 @@
+ 
+<% if @order_items.count>0 %>
+    <% total=0%>
+    <% @order_items.each do |oi| %>
+        <p>
+
+          <strong>item:</strong>
+          <%= oi.product_name %> |
+          <strong>quantity:</strong>
+          <%= oi.quantity %> |
+          <strong>total:</strong>
+          <%= oi.subtotal %>
+
+          <% total+=oi.subtotal %>
+
+          <%= form_with url: order_items_path do |f|%>
+            <%= f.hidden_field :item_id, :value => oi.productid %>
+            <button onclick="decrement(this)" type="button" class="btn">-</button>
+            <%= f.number_field :quantity,min: 1, max: 99, :value => oi.quantity, :id => "counting"%>
+            <button onclick="increment(this)" type="button" class="btn">+</button>
+            <%= f.submit "update cart" %>
+          <%end%> 
+          
+          <%= button_to "remove this item",order_item_path(oi.id), method: :delete%>       
+        </p>
+        <hr>    
+    <% end %>
+    <%= button_to "remove all Order-items",order_item_delete_all_path, method: :get%><br>
+
+    <h2>Total Price=<%=total%></h2>
+
+    <%= button_to "Place Order",place_order_path(total),class: "pop-up",method: :get%><br>
+
+<% else %>
+  <div class="position-relative">
+    <div class="position-absolute top-50 start-50 translate-middle" style="margin-top: 3rem">
+      <h4>Cart is empty</h4>
+    </div>
+  </div>
+
+   
+<% end %>
+
+<script>
+  function increment(element) {
+      var data=element.previousElementSibling.value;
+      data = Number(data) + 1;
+      element.previousElementSibling.value=data;     
+    }
+  function decrement(element) {
+      var data=element.nextElementSibling.value;
+      if(data > 0){
+      data = Number(data) - 1;
+      element.nextElementSibling.value=data;     
+       }
+    }
+</script>

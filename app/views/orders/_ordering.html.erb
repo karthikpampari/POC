@@ -1,0 +1,59 @@
+ 
+
+<%temp = 0%>
+<div class="col">
+    <div class="card card-center" style="width: 18rem;">
+      <% img=item.image%>
+      <%= image_tag img,class: "card-img-top"%>
+      <div class="card-body">
+          <h5 class="card-title"><%= item.name %><br> Rs <%= item.price %></h5>
+          <p class="card-text"><%=item.description%></p> <hr>
+
+          <% if @order_items.where(productid: item.id).count > 0%>
+            <% oi=@order_items.where(productid: item.id).first %>
+            <% if item.id == oi.productid%>
+              <strong>items in cart :<%= oi.quantity%></strong>
+              <% temp= oi.quantity%>
+              <%= button_to "remove this item", order_item_path(oi.id), method: :delete%> <hr>
+            <% end %>
+          <%end %> 
+
+          <%= form_with url: order_items_path do |f|%>
+              <%= f.hidden_field :item_id, :value => item.id %>
+              <button onclick="decrement(this)" type="button" class="btn">-</button>
+              <%= f.number_field :quantity,min: 1, max: 99, :value => temp, :id => "counting"%>
+              <button onclick="increment(this)" type="button" class="btn">+</button>
+              <%= f.submit "add to cart" %>
+          <%end%> 
+      </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+
+  function increment(element) {
+      var data=element.previousElementSibling.value;
+      data = Number(data) + 1;
+      element.previousElementSibling.value=data;    
+  }
+
+  function decrement(element) {
+      var data=element.nextElementSibling.value;
+      if(data > 0){
+      data = Number(data) - 1;
+      element.nextElementSibling.value=data;     
+      }
+  }
+  
+</script>
+
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  day: 2022-11-09
+  time: 2022-11-09 10:31:38
+  members: 1
+  table: 1
+
+two:
+  name: MyString
+  day: 2022-11-09
+  time: 2022-11-09 10:31:38
+  members: 1
+  table: 1

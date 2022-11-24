@@ -1,0 +1,23 @@
+
+
+<%if @bookings.present?%>
+  <% @bookings.each do |booking|%>
+    <div class="card">
+      <div class="card-header">
+        Booking id: <%=booking.id%>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">booking name:  <%=booking.name%> </h5>
+        <p class="card-text"><h5> booked table no: <%=booking.table%> </p> 
+        slot: <%=booking.time.to_date%> at  <%=booking.time.hour%>.00 </h5>
+        <%= button_to "cancel booking",booking_path(booking),class: "btn btn-warning" ,type: :button,method: :delete %>
+      </div>
+    </div><br>
+  <% end %>
+<%else %>
+  <div class="position-relative">
+    <div class="position-absolute top-50 start-50 translate-middle" style="margin-top: 3rem">
+      <h4>You Have No Bookings</h4>
+    </div>
+  </div>
+<%end %>

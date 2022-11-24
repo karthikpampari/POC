@@ -1,0 +1,33 @@
+<%= form_with(model: booking ) do |form| %>
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name, required: true  %>
+  </div>
+
+  <div>
+        <%= form.label :members, style: "display: block" %>
+        <%= form.select :members, [2,3,4,5,6,7,8], include_blank: true %>
+  </div>
+
+  <div data-controller="date">
+    <div>
+        <%= form.label :day, style: "display: block" %>
+        <%= form.date_field :day,min: Date.today, data: {action: "change->date#change"},required: true %>
+    </div>
+
+    <div>
+        <%= form.label :time, style: "display: block" %>
+        <%= form.select :time, [], {}, data: { date_target: "timeSelect", action: "change->date#table"} %>
+    </div>
+  
+    <div>
+        <%= form.label :table, style: "display: block" %>
+        <%= form.select :table,[], {} , data: { date_target: "tableSelect"}%>
+    </div>
+  </div>
+
+  <div>
+
+    <%= form.submit  class: 'btn btn-warning'%>
+  </div>
+<% end %>
