@@ -8,10 +8,10 @@
     </div>
   </div>
   
-  <div class="card-body" id="bdy">
+  <div class="card-body" id="bdy" >
    
         <h4>Starters</h4>
-        <div class="row row-cols-1 row-cols-md-4 g-4" style="border-bottom: solid grey 2px ; padding: 1rem">
+        <div class="row row-cols-1 row-cols-md-4 g-4" style="border-bottom: solid grey 2px ; padding: 1rem;">
             <% @items.each do |item| %>
                 <% if item.item_type == "Starter"%>
                     <%= render item %>
@@ -20,7 +20,7 @@
         </div>
         <br>
         <h4>Main Course</h4>
-        <div class="row row-cols-1 row-cols-md-4 g-4" style="border-bottom: solid grey 2px ; padding: 1rem">
+        <div class="row row-cols-1 row-cols-md-4 g-4" style="border-bottom: solid grey 2px ; padding: 1rem;">
             <% @items.each do |item| %>
                 <% if item.item_type == "Main Course"%>
                     <%= render item %>

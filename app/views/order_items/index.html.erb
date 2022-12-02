@@ -1,44 +1,70 @@
  
-<% if @order_items.count>0 %>
-    <% total=0%>
-    <% @order_items.each do |oi| %>
-        <p>
-
-          <strong>item:</strong>
-          <%= oi.product_name %> |
-          <strong>quantity:</strong>
-          <%= oi.quantity %> |
-          <strong>total:</strong>
-          <%= oi.subtotal %>
-
-          <% total+=oi.subtotal %>
-
-          <%= form_with url: order_items_path do |f|%>
-            <%= f.hidden_field :item_id, :value => oi.productid %>
-            <button onclick="decrement(this)" type="button" class="btn">-</button>
-            <%= f.number_field :quantity,min: 1, max: 99, :value => oi.quantity, :id => "counting"%>
-            <button onclick="increment(this)" type="button" class="btn">+</button>
-            <%= f.submit "update cart" %>
-          <%end%> 
-          
-          <%= button_to "remove this item",order_item_path(oi.id), method: :delete%>       
-        </p>
-        <hr>    
-    <% end %>
-    <%= button_to "remove all Order-items",order_item_delete_all_path, method: :get%><br>
-
-    <h2>Total Price=<%=total%></h2>
-
-    <%= button_to "Place Order",place_order_path(total),class: "pop-up",method: :get%><br>
-
-<% else %>
+<% unless @order_items.present? %>
   <div class="position-relative">
     <div class="position-absolute top-50 start-50 translate-middle" style="margin-top: 3rem">
       <h4>Cart is empty</h4>
     </div>
   </div>
+<% else %>
 
-   
+ <div class="card text-center">
+    <div class="card-header">
+      <h5> Your Cart items</h5>
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+      <% total=0%>
+      <% @order_items.each do |oi| %>
+          <p>
+            <strong>item:</strong>
+            <%= oi.product_name %> |
+            <strong>quantity:</strong>
+            <%= oi.quantity %> |
+            <strong>total:</strong>
+            <%= oi.subtotal %>
+            <% total+=oi.subtotal %>
+            <%= form_with url: order_items_path do |f|%>
+              <%= f.hidden_field :item_id, :value => oi.productid %>
+              <button onclick="decrement(this)" type="button" class="btn">-</button>
+              <%= f.number_field :quantity,min: 1, max: 99, :value => oi.quantity, :id => "counting"%>
+              <button onclick="increment(this)" type="button" class="btn">+</button>
+              <%= f.submit "update cart", class: "btn btn-success" %> 
+            <%end%> <br>
+            
+          <%= button_to "remove this item",order_item_path(oi.id), method: :delete, class: "btn btn-danger"%>    
+          </p>
+          <hr>    
+      <% end %>
+      <%= button_to "remove all Order-items",order_item_delete_all_path, method: :get, class: "btn btn-danger"%>
+      </p>
+    </div>
+    <div class="card-footer text-muted">
+      <h2>Total Price=<%=total%></h2>
+      <%= button_to "Place Order",place_order_path(total),class: "btn btn-warning", "data-bs-toggle"=>"modal", "data-bs-target" => "#staticBackdrop",method: :get%><br>
+    </div>
+ </div>
+
+  <!-- model popup for place order -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Order placed succesfully</h1>
+          <%= button_to "close", root_path,"data-bs-dismiss"=>"modal", method: :get%>
+        </div>
+        <div class="modal-body">
+          <% @order_items.each do |oi|%>
+            <%= oi.product_name %> (<%= oi.quantity %>)
+            <br>
+          <%end%>
+        </div>
+        <div class="modal-footer">
+          <strong>total price: </strong><%=total%>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <% end %>
 
 <script>

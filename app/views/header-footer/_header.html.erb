@@ -25,12 +25,12 @@
             <% count = "(#{temp})" %>
           <% else %>
             <% count = " "%>
-          <% end %>
+        <% end %>
         <li class="nav-item">
-          <%= button_to "Cart-items #{count}", order_items_path ,method: :get, class: "nav-link btn" %>
+          <%= link_to "Cart-items #{count}", order_items_path ,method: :get, class: "nav-link btn" %>
         </li> 
         <li class="nav-item">
-          <%= button_to "Order online", orders_path ,method: :get, class: "nav-link btn" %>
+          <%= link_to "Order online", orders_path ,method: :get, class: "nav-link btn btn-outline-light" %>
         </li>    
       </ul>
     </div>

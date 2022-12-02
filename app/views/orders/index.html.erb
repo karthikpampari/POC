@@ -47,6 +47,9 @@
             <% end %>
         </div>
 
+        <% if @order_items.count > 0 %>
+          <%= button_to "Go to Cart", order_items_path, method: :get , class: "btn btn-warning"%>
+        <% end %>
   </div>
 </div>
 

@@ -1,0 +1,157 @@
+
+app/channels/application_cable/channel.rb,177
+module ApplicationCableApplicationCable1,0
+  class Channel < ActionCable::Channel::BaseChannel2,0
+  class Channel < ActionCable::Channel::BaseApplicationCable::Channel2,0
+
+app/channels/application_cable/connection.rb,195
+module ApplicationCableApplicationCable1,0
+  class Connection < ActionCable::Connection::BaseConnection2,0
+  class Connection < ActionCable::Connection::BaseApplicationCable::Connection2,0
+
+app/controllers/application_controller.rb,120
+class ApplicationController < ActionController::BaseApplicationController1,0
+    def order_present order_present5,0
+
+app/controllers/bookings_controller.rb,393
+class BookingsController < ApplicationControllerBookingsController1,0
+    def index index2,0
+    def new new5,0
+    def createcreate9,0
+    def destroydestroy18,0
+    def select_date select_date26,0
+    def select_timeselect_time43,0
+    def booking_paramsbooking_params54,0
+    def select_date_paramsselect_date_params58,0
+    def select_time_paramsselect_time_params61,0
+
+app/controllers/items_controller.rb,88
+class ItemsController < ApplicationControllerItemsController1,0
+  def indexindex2,0
+
+app/controllers/orders_controller.rb,199
+class OrdersController < ApplicationControllerOrdersController1,0
+  def indexindex4,0
+  def all_orders all_orders20,0
+  def place_orderplace_order24,0
+  def order_present order_present35,0
+
+app/controllers/order_items_controller.rb,230
+class OrderItemsController < ApplicationControllerOrderItemsController1,0
+    def index index4,0
+    def create     create9,0
+    def destroydestroy25,0
+    def deletedelete33,0
+    def order_present order_present41,0
+
+app/helpers/application_helper.rb,47
+module ApplicationHelperApplicationHelper1,0
+
+app/helpers/bookings_helper.rb,41
+module BookingsHelperBookingsHelper1,0
+
+app/helpers/items_helper.rb,35
+module ItemsHelperItemsHelper1,0
+
+app/helpers/orders_helper.rb,37
+module OrdersHelperOrdersHelper1,0
+
+app/helpers/sessions_helper.rb,41
+module SessionsHelperSessionsHelper1,0
+
+app/jobs/application_job.rb,58
+class ApplicationJob < ActiveJob::BaseApplicationJob1,0
+
+app/mailers/application_mailer.rb,67
+class ApplicationMailer < ActionMailer::BaseApplicationMailer1,0
+
+app/models/application_record.rb,67
+class ApplicationRecord < ActiveRecord::BaseApplicationRecord1,0
+
+app/models/booking.rb,46
+class Booking < ApplicationRecordBooking1,0
+
+app/models/item.rb,40
+class Item < ApplicationRecordItem1,0
+
+app/models/order.rb,218
+class Order < ApplicationRecordOrder1,0
+    has_many :order_itemsorder_items2,0
+    has_many :order_itemsorder_items=2,0
+    has_many :order_itemsorder_item_ids2,0
+    has_many :order_itemsorder_item_ids=2,0
+
+app/models/order_item.rb,317
+class OrderItem < ApplicationRecordOrderItem1,0
+    belongs_to :order, optional: true order2,0
+    belongs_to :order, optional: true order=2,0
+    belongs_to :order, optional: true build_order2,0
+    belongs_to :order, optional: true create_order2,0
+    belongs_to :order, optional: true create_order!2,0
+
+config/application.rb,140
+module POCPOC9,0
+  class Application < Rails::ApplicationApplication10,0
+  class Application < Rails::ApplicationPOC::Application10,0
+
+db/migrate/20221108060027_create_items.rb,89
+class CreateItems < ActiveRecord::Migration[7.0]CreateItems1,0
+  def changechange2,0
+
+db/migrate/20221109050138_create_bookings.rb,95
+class CreateBookings < ActiveRecord::Migration[7.0]CreateBookings1,0
+  def changechange2,0
+
+db/migrate/20221114052107_create_orders.rb,91
+class CreateOrders < ActiveRecord::Migration[7.0]CreateOrders1,0
+  def changechange2,0
+
+db/migrate/20221114102341_create_order_items.rb,99
+class CreateOrderItems < ActiveRecord::Migration[7.0]CreateOrderItems1,0
+  def changechange2,0
+
+db/migrate/20221121102305_adding_image_column.rb,101
+class AddingImageColumn < ActiveRecord::Migration[7.0]AddingImageColumn1,0
+  def changechange2,0
+
+db/migrate/20221122115245_adding_default.rb,93
+class AddingDefault < ActiveRecord::Migration[7.0]AddingDefault1,0
+  def changechange2,0
+
+test/application_system_test_case.rb,95
+class ApplicationSystemTestCase < ActionDispatch::SystemTestCaseApplicationSystemTestCase3,0
+
+test/channels/application_cable/connection_test.rb,206
+class ApplicationCable::ConnectionTest < ActionCable::Connection::TestCaseConnectionTest3,0
+class ApplicationCable::ConnectionTest < ActionCable::Connection::TestCaseApplicationCable::ConnectionTest3,0
+
+test/controllers/bookings_controller_test.rb,90
+class BookingsControllerTest < ActionDispatch::IntegrationTestBookingsControllerTest3,0
+
+test/controllers/items_controller_test.rb,84
+class ItemsControllerTest < ActionDispatch::IntegrationTestItemsControllerTest3,0
+
+test/controllers/orders_controller_test.rb,86
+class OrdersControllerTest < ActionDispatch::IntegrationTestOrdersControllerTest3,0
+
+test/controllers/order_items_controller_test.rb,94
+class OrderItemsControllerTest < ActionDispatch::IntegrationTestOrderItemsControllerTest3,0
+
+test/controllers/sessions_controller_test.rb,90
+class SessionsControllerTest < ActionDispatch::IntegrationTestSessionsControllerTest3,0
+
+test/models/booking_test.rb,60
+class BookingTest < ActiveSupport::TestCaseBookingTest3,0
+
+test/models/item_test.rb,54
+class ItemTest < ActiveSupport::TestCaseItemTest3,0
+
+test/models/order_item_test.rb,64
+class OrderItemTest < ActiveSupport::TestCaseOrderItemTest3,0
+
+test/models/order_test.rb,56
+class OrderTest < ActiveSupport::TestCaseOrderTest3,0
+
+test/test_helper.rb,101
+class ActiveSupport::TestCaseTestCase5,0
+class ActiveSupport::TestCaseActiveSupport::TestCase5,0

@@ -22,14 +22,11 @@ class OrdersController < ApplicationController
   end 
 
   def place_order
-    
     @order = Order.find(session[:order_id])
     @order_items = @order.order_items 
     @order.total=params[:total].to_i
     @order.save
     session[:order_id]=nil
-    flash[:notice]="order placed successfully"
-    redirect_to root_path
   end 
 
   private

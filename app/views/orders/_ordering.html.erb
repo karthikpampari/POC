@@ -12,9 +12,7 @@
           <% if @order_items.where(productid: item.id).count > 0%>
             <% oi=@order_items.where(productid: item.id).first %>
             <% if item.id == oi.productid%>
-              <strong>items in cart :<%= oi.quantity%></strong>
               <% temp= oi.quantity%>
-              <%= button_to "remove this item", order_item_path(oi.id), method: :delete%> <hr>
             <% end %>
           <%end %> 
 
@@ -25,6 +23,7 @@
               <button onclick="increment(this)" type="button" class="btn">+</button>
               <%= f.submit "add to cart" %>
           <%end%> 
+
       </div>
     </div>
 </div>
