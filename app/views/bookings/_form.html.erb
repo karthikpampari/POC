@@ -1,31 +1,33 @@
 <%= form_with model: booking do |form| %>
-  <div style="float: left; width: 25%">
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name, required: true , placeholder: "enter your name "%>
-  </div>
+ <div data-controller="date">
+   <ul class="navbar" style="list-style: none">
+      <li>
+        <%= form.label :name, style: "display: block" %>
+        <%= form.text_field :name, required: true , placeholder: "enter your name "%>
+      </li>
 
-  <div style="float: left; width: 25%">
-        <%= form.label :members, style: "display: block" %>
-        <%= form.select :members, [2,3,4,5,6,7,8],prompt: " Enter members"%>
-  </div>
+      <li>
+            <%= form.label :members, style: "display: block" %>
+            <%= form.select :members, [2,3,4,5,6,7,8],prompt: " Enter members"%>
+      </li>
 
-  <div data-controller="date" style="float: left; width: 50%;">
-    <div style="float: left;width: 33%">
-        <%= form.label :day, style: "display: block" %>
-        <%= form.date_field :day,min: Date.today,data: {action: "change->date#change"},required: true %>
-    </div>
+      <li>
+          <%= form.label :day, style: "display: block" %>
+          <%= form.date_field :day,min: Date.today,data: {action: "change->date#change"},required: true %>
+      </li>
 
-    <div style="float: left;width: 33%">
-        <%= form.label :time, style: "display: block" %>
-        <%= form.select :time, [], {prompt: "select the slot"},data: { date_target: "timeSelect", action: "change->date#table"} %>
-    </div>
-  
-    <div style="float: left;width: 33%">
-        <%= form.label :table, style: "display: block" %>
-        <%= form.select :table,[], {prompt: "select the table"} , data: { date_target: "tableSelect"}%>
-    </div>
+      <li>
+          <%= form.label :time, style: "display: block" %>
+          <%= form.select :time, [], {prompt: "select the slot"},data: { date_target: "timeSelect", action: "change->date#table"},required: true  %>
+      </li>
+    
+      <li>
+          <%= form.label :table, style: "display: block" %>
+          <%= form.select :table,[],{prompt: "select the table"} , data: { date_target: "tableSelect"},required: true %>
+      </li>
+    </ul>
   </div>
-  <div style= "float: left; margin: 2rem 0rem 0rem 18rem">
+  <div style= "display: flex; justify-content: center;  padding: 2rem">
     <%= form.submit  class: 'btn btn-warning'%>
   </div>
 <% end %>

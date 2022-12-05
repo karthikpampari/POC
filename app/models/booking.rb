@@ -1,4 +1,4 @@
 class Booking < ApplicationRecord
-   validates :name, :day, :time, :table,  presence: true
+   validates :name, :members, :day, :time, :table,  presence: true
 end
 
