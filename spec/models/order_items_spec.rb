@@ -6,7 +6,7 @@ describe OrderItem do
         expect(assc.macro).to eq :belongs_to
       end
       context "creation of order item " do 
-            it "without order_id " do 
+            it " without order_id " do 
                 temp = OrderItem.create(productid: 2, product_name: "test", quantity: 2, subtotal: 22)
                 expect(temp).to be_valid
             end 

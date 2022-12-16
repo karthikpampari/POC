@@ -40,7 +40,7 @@
     </div>
     <div class="card-footer text-muted">
       <h2>Total Price=<%=total%></h2>
-      <%= button_to "Place Order",place_order_path(total),class: "btn btn-warning", "data-bs-toggle"=>"modal", "data-bs-target" => "#staticBackdrop",method: :get%><br>
+      <%= button_to "Place Order",place_order_path(total),class: "btn btn-warning", "data-bs-toggle"=>"modal", "data-bs-target" => "#staticBackdrop",method: :post%><br>
     </div>
  </div>
 

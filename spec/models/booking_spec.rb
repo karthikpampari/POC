@@ -13,6 +13,7 @@ RSpec.describe Booking, type: :model do
         it "using factorybot" do 
             expect(subject).to be_valid
         end
+        
     end 
 
     context "booking not to be valid" do 

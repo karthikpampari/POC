@@ -19,7 +19,7 @@ class OrderItemsController < ApplicationController
         else 
           @orderitem=@order.order_items.create(productid: @item.id,product_name: @item.name,quantity: @quantity, subtotal: @item.price*@quantity)
         end 
-        redirect_to request.referer
+        redirect_to orders_path
     end 
     
     def destroy
@@ -27,13 +27,14 @@ class OrderItemsController < ApplicationController
       @order_item=@order.order_items.find(params[:id])
       @order_item.destroy
       flash[:notice] = "successfully deleted"
-      redirect_to request.referer
+      redirect_to order_items_path
     end 
 
     def delete
         @order = Order.find(session[:order_id])
         @order.order_items.destroy_all
-        redirect_to request.referer
+        flash[:notice] = "successfully deleted"
+        redirect_to order_items_path
     end 
 
     private
