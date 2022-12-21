@@ -26,7 +26,7 @@ RSpec.describe OrderItemsController, type: :controller do
         session[:order_id] = order.id
         post :create, params:{item_id: item.id, quantity: 2}
         expect(order.order_items).to_not be_empty
-        expect(response).to redirect_to orders_path
+        expect(response).to redirect_to order_items_path
       end
     end
 

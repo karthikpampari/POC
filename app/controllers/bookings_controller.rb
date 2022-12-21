@@ -26,11 +26,11 @@ class BookingsController < ApplicationController
     
     def select_date 
         @target=select_date_params[:target]
-        @booking = Booking.where(day: select_date_params[:date])
+        @bookings = Booking.where(day: select_date_params[:date])
         @time_slots_available=["9:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00"]
         temp=[]
 
-        @booking.each do |i|
+        @bookings.each do |i|
             temp << i.time.hour
         end 
 
@@ -44,8 +44,8 @@ class BookingsController < ApplicationController
     def select_time
         @target=select_time_params[:target]
         @table=[1,2,3,4,5]
-        booking = Booking.where(day: select_time_params[:date].to_date , time: select_time_params[:time].to_datetime)
-        booking.each do |i|
+        bookings = Booking.where(day: select_time_params[:date].to_date , time: select_time_params[:time].to_datetime)
+        bookings.each do |i|
             @table.delete(i.table)
         end 
         @tables_available=@table 

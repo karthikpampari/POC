@@ -19,7 +19,7 @@ class OrderItemsController < ApplicationController
         else 
           @orderitem=@order.order_items.create(productid: @item.id,product_name: @item.name,quantity: @quantity, subtotal: @item.price*@quantity)
         end 
-        redirect_to orders_path
+        redirect_to order_items_path
     end 
     
     def destroy
